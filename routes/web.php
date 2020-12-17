@@ -1,5 +1,7 @@
 <?php
+
 use Illuminate\Http\Request;
+use \Mailjet\Resources;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,8 +28,33 @@ Route::post('/newpayroll', 'HomeController@newpayroll')->name('newpayroll');
 Route::post('/addsalesrep', 'HomeController@addsalesrep')->name('addsalesrep');
 
 Route::post('/sendemail',function(Request $request){
-    mail($request->emailaddress,"Test Email",$request->emailbody,"From: <onlineinsure@example.com>");
+    
+    $mj = new \Mailjet\Client('575a7a14216e03ff78b6872cd5e7cfe4','b8571c0295ff41b3a088e485f46e7b8a',true,['version' => 'v3.1']);
+  $body = [
+    'Messages' => [
+      [
+        'From' => [
+          'Email' => "bryllim@gmail.com",
+          'Name' => "Bryl Kezter"
+        ],
+        'To' => [
+          [
+            'Email' => $request->emailaddress,
+            'Name' => "Bryl Kezter"
+          ]
+        ],
+        'Subject' => "Greetings from Mailjet.",
+        'TextPart' => $request->emailbody,
+        'HTMLPart' => "<h3>".$request->emailbody."</h3>",
+        'CustomID' => "AppGettingStartedTest"
+      ]
+    ]
+  ];
+  $response = $mj->post(Resources::$Email, ['body' => $body]);
+  $response->success() && var_dump($response->getData());
+
     return back();
+
 })->name('sendemail');
 
 

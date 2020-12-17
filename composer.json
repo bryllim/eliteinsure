@@ -9,14 +9,15 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "ext-gd": "*",
         "barryvdh/laravel-dompdf": "^0.8.7",
         "fideloper/proxy": "^4.0",
         "fzaninotto/faker": "^1.8",
         "laravel/framework": "^6.2",
         "laravel/tinker": "^1.0",
         "laravel/ui": "^1.1",
-        "uxweb/sweet-alert": "dev-master",
-        "ext-gd": "*"
+        "mailjet/mailjet-apiv3-php": "^1.5",
+        "uxweb/sweet-alert": "dev-master"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
