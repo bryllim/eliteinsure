@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,13 +17,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/newsalesrep', 'HomeController@newsalesrep')->name('newsalesrep');
 Route::get('/createpayroll', 'HomeController@createpayroll')->name('createpayroll');
 
 Route::post('/newpayroll', 'HomeController@newpayroll')->name('newpayroll');
 
 Route::post('/addsalesrep', 'HomeController@addsalesrep')->name('addsalesrep');
+
+Route::post('/sendemail',function(Request $request){
+    mail($request->emailaddress,"Test Email",$request->emailbody,"From: <onlineinsure@example.com>");
+    return back();
+})->name('sendemail');
 
 
 

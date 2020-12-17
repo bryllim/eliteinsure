@@ -27,7 +27,7 @@ th{
 <h1 style="color:blue; text-align:center"><strong>Buyer Created Tax Invoice</strong></h1>
 
 <div style="background-color:lightgray; padding:3px">
-    <h1 style="margin-left:10px">Salesrep No.: {{$data->salesrep_id}}
+    <h1 style="margin-left:10px">Salesrep No.: {{$data->salesrep_id}} {{$salesrep->name}} 
         <span style="float:right; margin-right:10px">
             @if($data->period == "1-15")
                 01/{{$data->month}}/{{$data->year}} - 15/{{$data->month}}/{{$data->year}}

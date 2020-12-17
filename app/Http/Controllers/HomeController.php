@@ -83,7 +83,7 @@ class HomeController extends Controller
         $tax = $commission * $taxrate;
         $paymentamount = $commission - $tax;
         
-        $pdf = PDF::loadView('pdf', ['data' => $payroll, 'clients' => $clients, 'netcommission' => $netcommission, 'commission' => $commission, 'tax' => $tax, 'paymentamount' => $paymentamount]);
+        $pdf = PDF::loadView('pdf', ['data' => $payroll, 'clients' => $clients, 'netcommission' => $netcommission, 'commission' => $commission, 'tax' => $tax, 'paymentamount' => $paymentamount, 'salesrep' => $salesrep]);
         return $pdf->stream();
     }
 }
